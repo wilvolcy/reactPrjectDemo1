@@ -1,6 +1,6 @@
-import React from 'react';
-import ReactDom from 'react-dom'
-import './index.css'
+// import React from 'react';
+// import ReactDom from 'react-dom'
+// import './index.css'
 // function Greeting(){
 //   return <h4>This is  my first test </h4>;
 // }
@@ -91,7 +91,7 @@ import './index.css'
 // Default name for variable is instance variable is props
 // kote ns rele component lan nap pase valeur props la epi ns pral relel nan 
 // kote objet a defini an nap fe apel avel poun ka use li 
-// <Book title = 'jean'/> ---> nan fonksyon an nap relel --> proprs.jean
+// <Book title = 'jean'/> ---> nan fonksyon an nap relel --> proprs.title
 // const image = 'https://m.media-amazon.com/images/I/81KAMv9wetL._AC_UY436_FMwebp_QL65_.jpg'
 // const title ='If Animals Kissed Good Night'
 // const author ='by Ann Whitford Paul'
@@ -346,26 +346,83 @@ import './index.css'
 
 
 
-const books = [
-  {
-  id:1,  
-  image : 'https://m.media-amazon.com/images/I/81KAMv9wetL._AC_UY436_FMwebp_QL65_.jpg',
-  title : 'If Animals Kissed Good Night',
-  author :'by Ann Whitford Paul'
-},
-{ 
-  id:2,
-  image : 'https://m.media-amazon.com/images/I/81YIHfmdcfL._AC_UY436_FMwebp_QL65_.jpg',
-  title : '365 Bedtime Stories and Rhymes',
-  author :'Cottage Door Press '
-},
-{
-  id:3,
-  image : 'https://m.media-amazon.com/images/I/61kYZrlbbcL._AC_UL640_FMwebp_QL65_.jpg',
-  title : 'ALMA, THE UNICORN: A Children\'s Book About The Power of Diversity In Sports',
-  author :'Mike Alpers and Angela Sun'
-}
-]
+// const books = [
+//   {
+//   id:1,  
+//   image : 'https://m.media-amazon.com/images/I/81KAMv9wetL._AC_UY436_FMwebp_QL65_.jpg',
+//   title : 'If Animals Kissed Good Night',
+//   author :'by Ann Whitford Paul'
+// },
+// { 
+//   id:2,
+//   image : 'https://m.media-amazon.com/images/I/81YIHfmdcfL._AC_UY436_FMwebp_QL65_.jpg',
+//   title : '365 Bedtime Stories and Rhymes',
+//   author :'Cottage Door Press '
+// },
+// {
+//   id:3,
+//   image : 'https://m.media-amazon.com/images/I/61kYZrlbbcL._AC_UL640_FMwebp_QL65_.jpg',
+//   title : 'ALMA, THE UNICORN: A Children\'s Book About The Power of Diversity In Sports',
+//   author :'Mike Alpers and Angela Sun'
+// }
+// ]
+
+// function BookList () {
+//   return (<section className= 'bookList'>
+//  {books.map((book)=>{
+//       return <Book key={book.id} {...book}></Book>
+//     })}
+//   </section>);
+// }
+// const clickButton = (e) => {
+//   console.log("You click on the button");
+//   console.log("Event is :" +e.target);
+// }
+// //if you want to give an argurment to the fucntion 
+// // when you call it you have to setup an arrow function, if not it will call it right away 
+// // and this is not often what you want.
+// const moreComplexEvent = (author)=>{
+//   console.log('The author of this book is :'+author);
+// };
+// const Book = ({image,title,author,children})=>{
+//   return (<section className= 'book' onMouseOver = {()=>{
+//     console.log("On mouse over event, and print title : "+title);
+//   }}>
+//     <img src={image} alt='' />
+//     <h1 onClick = {()=>{console.log(title)}}>{title}</h1>
+//     <h4 onClick = {()=>moreComplexEvent(author)}>{author}</h4> 
+//     {children}
+//     <button onClick={clickButton}>My Button</button>
+//   </section>);
+// }
+
+
+// ReactDom.render(<BookList/>,document.getElementById('root'))
+
+
+
+//======================================================================================================================
+//================ Import and export ======================
+
+// There is name export 
+// you just need to export the name like export const books = [];
+// and you need to import it where you are going to use it  
+// because it is not comming from the node module we need to setup a relative path--> import  {books} from './books'
+// and it is a js file we dont need the extension 
+
+//There is also default export 
+// We use it for the component and the name of the component should match exactely the name of the file.
+// at the bottom line we us default export NameComponent
+
+// we can have multiple name export in a single but we can only have a single 
+// default export in a file.
+
+import React from 'react';
+import ReactDom from 'react-dom'
+import './index.css'
+import  {books} from './books'
+import Book from './Book'
+
 
 function BookList () {
   return (<section className= 'bookList'>
@@ -375,14 +432,6 @@ function BookList () {
   </section>);
 }
 
-const Book = ({image,title,author,children})=>{
-  return (<section className= 'book'>
-    <img src={image} alt='' />
-    <h1>{title}</h1>
-    <h4>{author}</h4> 
-    {children}
-  </section>);
-}
 
 
 ReactDom.render(<BookList/>,document.getElementById('root'))
